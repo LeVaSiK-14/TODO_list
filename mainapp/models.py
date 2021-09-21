@@ -4,13 +4,13 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 ALL_STATUS = [
-    ('start', 'Start'),
-    ('in_process', 'In process'),
-    ('is_finished', 'Is finished')
+    ('Start', 'start'),
+    ('In process', 'in_process'),
+    ('Is finished', 'is_finished')
 ]
 
 class Task(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks')
     title = models.CharField(max_length=127, default='')
     description = models.TextField(max_length=1027, default='')
     dead_line = models.DateTimeField()
